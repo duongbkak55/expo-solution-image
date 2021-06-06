@@ -13,6 +13,7 @@ import useColorScheme from '../hooks/useColorScheme';
 import TabOneScreen from '../screens/TabOneScreen';
 import TabTwoScreen from '../screens/TabTwoScreen';
 import { BottomTabParamList, TabOneParamList, TabTwoParamList } from '../types';
+import ImageScreen from "../screens/ImageScreen";
 
 const BottomTab = createBottomTabNavigator<BottomTabParamList>();
 
@@ -21,8 +22,15 @@ export default function BottomTabNavigator() {
 
   return (
     <BottomTab.Navigator
-      initialRouteName="TabOne"
+      initialRouteName="ImageScreen"
       tabBarOptions={{ activeTintColor: Colors[colorScheme].tint }}>
+        <BottomTab.Screen
+            name="ImageScreen"
+            component={ImageScreen}
+            options={{
+                tabBarIcon: ({ color }) => <TabBarIcon name="ios-code" color={color} />,
+            }}
+        />
       <BottomTab.Screen
         name="TabOne"
         component={TabOneNavigator}
